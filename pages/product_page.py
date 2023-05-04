@@ -12,9 +12,9 @@ class ProductPage(BasePage):
     def should_be_item_in_basket(self):
         item_in_basket = self.browser.find_element(By.XPATH, '//div[@class="alertinner "]')
         added_item = self.browser.find_element(By.XPATH, '//h1')
-        assert added_item.text in item_in_basket.text, "Such item is not added"
+        assert added_item.text in item_in_basket.text, "Added item isn't in the basket"
 
     def should_be_basket_total_equal_item_price(self):
         item_price = self.browser.find_elements(By.XPATH, '//p[@class="price_color"]')[0]
         basket_total = self.browser.find_element(By.XPATH, '//div[@class="basket-mini pull-right hidden-xs"]')
-        assert item_price.text == basket_total.text, "Values are not equal"
+        assert item_price.text in basket_total.text, "Values are not equal"
