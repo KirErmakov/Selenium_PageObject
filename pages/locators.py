@@ -9,4 +9,6 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, '.btn-add-to-basket')
+    SUCCESS_MESSAGE = (By.XPATH, "//strong[contains(text(),'Coders at Work')]")
+
 
