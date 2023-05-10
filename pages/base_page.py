@@ -28,6 +28,10 @@ class BasePage():
         # alert = self.browser.switch_to.alert
         # alert.accept()
 
+    def go_to_basket_page(self):
+        basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket_link.click()
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link isn't presented"
 
