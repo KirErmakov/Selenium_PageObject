@@ -9,7 +9,7 @@ class ProductPage(BasePage):
         add_to_basket_button.click()
 
 
-    def should_be_item_in_basket(self):
+    def should_be_added_item_in_basket(self):
         added_item = self.browser.find_element(By.XPATH, '//h1')
         item_in_basket = self.browser.find_element(By.XPATH, '//strong[text()="Coders at Work"]')
         assert added_item.text == item_in_basket.text, "Another item is in the basket"
