@@ -5,6 +5,7 @@ import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
+
 class BasePage():
 
     def __init__(self, browser, url, timeout=10):
@@ -25,8 +26,7 @@ class BasePage():
     def go_to_login_page(self):
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
-        # alert = self.browser.switch_to.alert
-        # alert.accept()
+
 
     def go_to_basket_page(self):
         basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
@@ -45,8 +45,6 @@ class BasePage():
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
         alert.accept()
-        #WebDriverWait(self.browser, 10).until(
-            #EC.alert_is_present())
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text

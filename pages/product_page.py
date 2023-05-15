@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-from selenium.webdriver.common.by import By
 
 
 class ProductPage(BasePage):
@@ -10,13 +9,13 @@ class ProductPage(BasePage):
 
 
     def should_be_added_item_in_basket(self):
-        added_item = self.browser.find_element(By.XPATH, '//h1')
-        item_in_basket = self.browser.find_element(By.XPATH, '//strong[text()="Coders at Work"]')
-        assert added_item.text == item_in_basket.text, "Another item is in the basket"
+        added_product = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
+        product_in_basket = self.browser.find_element(*ProductPageLocators.PRODUCT_IN_BASKET_NAME)
+        assert added_product.text == product_in_basket.text, "Chosen product has not been added to basket"
     def should_be_basket_total_equal_item_price(self):
-        item_price = self.browser.find_element(By.XPATH, '//p[@class="price_color"]')
-        basket_total = self.browser.find_element(By.XPATH, '//strong[text()="£19.99"]')
-        assert item_price.text in basket_total.text, "Item price is not equal basket total"
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
+        basket_total = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL)
+        assert product_price.text == basket_total.text, "Item price is not equal to basket total"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
